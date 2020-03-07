@@ -28,5 +28,11 @@ UserSchema.pre('save', async (next: mongoose.HookNextFunction)=>{
             return next();
         }
         const hashed = await bcryt.hash(this['password'], 20);
+        this['password'] = hashed;
+        return next();
+    } catch(err){
+        return next(err);
+    } finally{
+        
     }
 });

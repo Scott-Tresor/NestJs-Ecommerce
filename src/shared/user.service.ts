@@ -4,9 +4,12 @@ import { Model } from 'mongoose';
 import { RegisterDTO, LoginDTO } from '../../dist/auth/auth.dto';
 import * as bcryt from 'bcrypt';
 import { InjectModel } from '@nestjs/mongoose';
+
+
 @Injectable()
 export class UserService {
     constructor(@InjectModel('User') private userModel: Model<User>){}
+
     private sanitizeUser(user: User){
         return user.depopulate('password');
     }

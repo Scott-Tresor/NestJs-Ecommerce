@@ -5,4 +5,6 @@ const axios = require('axios')
         username: 'username',
         password: 'password'
     });
+    console.log(data);
+    
 });
