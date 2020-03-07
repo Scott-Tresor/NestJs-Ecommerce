@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import * as bcryt from 'bcrypt';
 
 export const UserSchema = new mongoose.Schema({
     name: String,
@@ -18,5 +19,14 @@ export const UserSchema = new mongoose.Schema({
     created: {
         type: Date,
         default: Date.now(),
+    }
+});
+
+UserSchema.pre('save', async (next: mongoose.HookNextFunction)=>{
+    try{
+        if(!this.isModified('password')){
+            return next();
+        }
+        const hashed = await bcryt.hash(this['password'], 20);
     }
 });
