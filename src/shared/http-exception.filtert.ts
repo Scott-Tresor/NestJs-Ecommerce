@@ -5,7 +5,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     /**
      * @param exception 
      * @param hotst 
-     * @returns json
+     * @returns {json}
      * @author scott-Tresor <scotttresor@gmail.com>
      */
     catch(exception: HttpException, hotst: ArgumentsHost){
